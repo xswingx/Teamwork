@@ -1,0 +1,20 @@
+#define CHESS_ROWS        15  //棋盘水平方向格子数
+#define CHESS_COLUMES    15  //棋盘垂直方向格子数
+#define RECT_WIDTH        50  //每个格子的宽
+#define RECT_HEIGHT        50  //每个格式的高
+
+void MainWindow::DrawChessboard()
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::HighQualityAntialiasing, true); //渲染类型为高质量抗锯齿
+    painter.setBrush(Qt::darkCyan);//设置填冲颜色
+    painter.setPen(QPen(QColor(Qt::black),2));//设置画笔颜色,线粗,默认为实线
+
+    for(int i = 0;i<CHESS_COLUMES; i++)//遍历每一个座标点,画出每一个矩形.
+    {
+        for (int j = 0; j<CHESS_ROWS; j++)
+        {
+            painter.drawRect( (i+1)*RECT_WIDTH,(j+1)*RECT_HEIGHT,RECT_WIDTH,RECT_HEIGHT);
+        }
+    }
+}
